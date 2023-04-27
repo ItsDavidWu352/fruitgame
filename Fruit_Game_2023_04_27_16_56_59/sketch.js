@@ -1,3 +1,4 @@
+var start;
 var reset, resetImg;
 //var win, winImg;
 var gameover,gameoverImg, gameoversound;
@@ -12,7 +13,7 @@ var scream1, scream2, scream3, scream4, scream5, scream6;
 var PLAY = 1;
 var END = 0;
 //var WIN = 2;
-var gameState = 1;
+var gameState = 0;
 
 var x_dim = 400;
 var y_dim = 700;
@@ -51,7 +52,11 @@ function preload() {
 
 function setup(){
 
-  createCanvas (x_dim,y_dim);
+    start = createButton("START");
+    start.position(width / 2 - 30, height + 40);
+    start.mousePressed(PlayButton);
+  
+    createCanvas (x_dim,y_dim);
   
 //reset = createSprite(300,280);
 //reset. addAnimation("reset",resetImg);
@@ -183,6 +188,8 @@ function draw(){
       }
     }
   }
+  
+  
  else if (gameState===END){
       
    //   sword.visible = false;
@@ -289,4 +296,8 @@ bomb.setLifetime=50;
 enemyGroup.add(bomb);
 
 }
-}  
+} 
+
+function PlayButton() {
+  gameState = PLAY;
+}
